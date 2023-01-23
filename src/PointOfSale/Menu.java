@@ -78,7 +78,6 @@ public class Menu {
         System.out.println("Table number " + number);
         System.out.println(order);
         System.out.println(priceFormatted);
-
     }
     private static float calculateDiscount(float runningTotal) {
         return (float) (runningTotal * 0.9);
