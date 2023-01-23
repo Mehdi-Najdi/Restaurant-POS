@@ -21,10 +21,10 @@ public class Menu {
 
         System.out.println("""
                         Our Menu:
-                Pizza ......... £10
-                Burger ........  £6
-                Chips .........  £4
-                Ice_Cream .....  £3
+                Pizza ......... £9.99
+                Burger ........  £5.99
+                Chips .........  £2.99
+                Ice_Cream .....  £3.50
                 Drinks ........  £2
                 """);
 
@@ -62,14 +62,16 @@ public class Menu {
                     continue;
             }
 
-//                order = addItem(order);
-//                order = removeItem(order);
-//                cancelOrder(order);
-//                runningTotal = calculateDiscount(runningTotal);
+            //order = addItem(order);
+            addItem(item.trim(), order);
+            //order = removeItem(order);
+            removeItem(item, order);
+            cancelOrder(order);
+            runningTotal = calculateDiscount(runningTotal);
 
             priceFormatted = NumberFormat.getCurrencyInstance().format(runningTotal);
 
-            order.add(item.trim());
+            //order.add(item.trim());
 
             System.out.println("Item Added.");
             System.out.println("select more or type \"basket\" to view your basket! ");
@@ -82,12 +84,25 @@ public class Menu {
     private static float calculateDiscount(float runningTotal) {
         return (float) (runningTotal * 0.9);
     }
-    public static List addItem(List<String> order){
 
-        return Collections.singletonList(order.add(String.valueOf(order)));
+    public static void addItem(String item, List<String> order) {
+        order.add(item.trim());
     }
-    public static List removeItem(List<String> order){
-        return Collections.singletonList(order.remove(order));
+
+//    public static List addItem(List<String> order){
+//
+//        return Collections.singletonList(order.add(String.valueOf(order)));
+//    }
+//    public static List removeItem(List<String> order){
+//        return Collections.singletonList(order.remove(order));
+//    }
+
+    public static void removeItem(String item, List<String> order)
+    {
+        if (order.contains(item))
+            order.remove(item);
+        else
+            System.out.println("order does not contain " + item);
     }
     public static void cancelOrder(List<String> order){
          order.clear();
