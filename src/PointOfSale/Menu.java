@@ -62,11 +62,16 @@ public class Menu {
             }
 
             order.add(item.trim());
+            Discount normalDiscount = new Discount();
+            Discount exclusiveDiscount = new ExDiscount();
 
 //            addItem(item.trim(), order);
 //            removeItem(item, order);
 //            cancelOrder(order);
-            runningTotal = Discount.calculateDiscount(runningTotal);
+
+            runningTotal = normalDiscount.calculateDiscount(runningTotal);
+
+            runningTotal = exclusiveDiscount.calculateDiscount(runningTotal);
 
             priceFormatted = NumberFormat.getCurrencyInstance().format(runningTotal);
 
