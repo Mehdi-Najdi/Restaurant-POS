@@ -69,9 +69,13 @@ public class Menu {
 //            removeItem(item, order);
 //            cancelOrder(order);
 
-            runningTotal = normalDiscount.calculateDiscount(runningTotal);
+            if (runningTotal > 20) {
+                runningTotal = normalDiscount.calculateDiscount(runningTotal);
+            }
 
-            runningTotal = exclusiveDiscount.calculateDiscount(runningTotal);
+            if (runningTotal > 30) {
+                runningTotal = exclusiveDiscount.calculateDiscount(runningTotal);
+            }
 
             priceFormatted = NumberFormat.getCurrencyInstance().format(runningTotal);
 
